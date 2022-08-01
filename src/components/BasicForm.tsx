@@ -5,6 +5,10 @@ const validateName = (name: string) => {
   return name.trim().length > 0;
 };
 
+const validateEmail = (email: string) => {
+  return new RegExp(/^\S+@\S+\.\S+$/).test(email);
+};
+
 const BasicForm = () => {
   const {
     value: firstName,
@@ -31,9 +35,7 @@ const BasicForm = () => {
     valueChangeHandler: emailChangeHandler,
     valueBlurHandler: emailBlurHandler,
     reset: resetEmail,
-  } = useInput((email: string) => {
-    return new RegExp(/^\S+@\S+\.\S+$/).test(email);
-  });
+  } = useInput(validateEmail);
 
   const onSubmit = (event: React.FormEvent) => {
     event.preventDefault();
