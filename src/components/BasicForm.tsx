@@ -1,11 +1,11 @@
 import React from "react";
 import useInput from "../hooks/useInput";
 
-const BasicForm = () => {
-  const validateName = (name: string) => {
-    return name.trim().length > 0;
-  };
+const validateName = (name: string) => {
+  return name.trim().length > 0;
+};
 
+const BasicForm = () => {
   const {
     value: firstName,
     valueIsValid: firstNameIsValid,
