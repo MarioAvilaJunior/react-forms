@@ -37,8 +37,13 @@ const BasicForm = () => {
     reset: resetEmail,
   } = useInput(validateEmail);
 
+  const formIsValid = firstNameIsValid && lastNameIsValid && emailIsValid;
+
   const onSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    if (!formIsValid) {
+      return;
+    }
     resetFirstName();
     resetLastName();
     resetEmail();
@@ -86,10 +91,7 @@ const BasicForm = () => {
       </div>
       {emailHasError && <p className="error-text">Email must be valid</p>}
       <div className="form-actions">
-        <button
-          type="submit"
-          disabled={!(firstNameIsValid && lastNameIsValid && emailIsValid)}
-        >
+        <button type="submit" disabled={!formIsValid}>
           Submit
         </button>
       </div>
